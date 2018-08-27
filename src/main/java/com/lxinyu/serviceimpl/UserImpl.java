@@ -1,0 +1,63 @@
+package com.lxinyu.serviceimpl;
+
+import com.lxinyu.dao.UserMapper;
+import com.lxinyu.entity.User;
+import com.lxinyu.service.IUser;
+import com.lxinyu.utils.MybatisConnection;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by PC-Lxinyu on 2018/8/20.
+ */
+@Service
+public class UserImpl implements IUser {
+
+    SqlSession sqlSession = MybatisConnection.createSqlSession();
+
+    @Override
+    public User selectUser(String username, String password) {
+//        SqlSession sqlSession = MybatisConnection.createSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = new User();
+
+        user.setPassword("abc");
+
+        user.setUsername("aaa");
+
+        user = userMapper.selectUser(user);
+
+//        User user = new User();
+//
+//        user.setAge(25);
+//        user.setName("aaa");
+//        user.setPassword("abc");
+        return user;
+    }
+
+    @Override
+    public List<User> showUsers() {
+        return null;
+    }
+
+    @Override
+    public int insertUser(User user) {
+        return 0;
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return 0;
+    }
+
+    @Override
+    public int deleteUser(String username, String password) {
+        return 0;
+    }
+}

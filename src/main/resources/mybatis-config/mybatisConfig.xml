@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="application.properties"></properties>
+    <!-- 配置数据源信息 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- POOLED        PooledDataSourceFactory   使用连接池的数据源 -->
+            <!-- UNPOOLED      UnpooledDataSourceFactory  不使用连接池的数据源 -->
+            <!-- JNDI          JndiDataSourceFactory    使用JNDI实现的数据源 -->
+            <!-- type=”POOLED” MyBatis会创建PooledDataSource实例 type=”UNPOOLED” MyBatis会创建UnpooledDataSource实例type=”JNDI” MyBatis会从JNDI服务上查找DataSource实例 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${spring.datasource.driver-class-name}"/>
+                <property name="url" value="${spring.datasource.url}"/>
+                <!-- 配置userName -->
+                <property name="username" value="${spring.datasource.username}"></property>
+                <!-- 配置密码 -->
+                <property name="password" value="${spring.datasource.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--将写好的sql映射文件注册到全局配置文件中，类路径下直接写 UserMapper.xml就行，要是在包中则写com/yunqing/.../UserMapper.xml-->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml" />
+    </mappers>
+</configuration>
