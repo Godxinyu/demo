@@ -27,9 +27,9 @@ public class UserImpl implements IUser {
 
         User user = new User();
 
-        user.setPassword("abc");
+        user.setPassword(password);
 
-        user.setUsername("aaa");
+        user.setUsername(username);
 
         user = userMapper.selectUser(user);
 

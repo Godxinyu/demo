@@ -22,7 +22,7 @@
             </dataSource>
         </environment>
     </environments>
-    <!--将写好的sql映射文件注册到全局配置文件中，类路径下直接写 UserMapper.xml就行，要是在包中则写com/yunqing/.../UserMapper.xml-->
+
     <mappers>
         <mapper resource="mapper/UserMapper.xml" />
     </mappers>
