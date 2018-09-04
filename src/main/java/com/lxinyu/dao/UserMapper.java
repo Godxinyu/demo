@@ -1,6 +1,7 @@
 package com.lxinyu.dao;
 
 import com.lxinyu.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**

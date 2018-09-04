@@ -18,11 +18,12 @@ import java.util.List;
 public class UserImpl implements IUser {
 
     SqlSession sqlSession = MybatisConnection.createSqlSession();
+//    @Autowired
+//    private UserMapper userMapper;
 
     @Override
     public User selectUser(String username, String password) {
-//        SqlSession sqlSession = MybatisConnection.createSqlSession();
-
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         User user = new User();
