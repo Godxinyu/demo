@@ -1,8 +1,8 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>登陆界面</title>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
     <style>
         html {
             background-color: #B5DEF2;
@@ -108,15 +108,10 @@
             font: 11px Arial;
         }
     </style>
-    <script type="application/javascript">
-        function func() {
-            window.location.href="/register";
-        }
-    </script>
 </head>
 <body>
 <div class="wrapper">
-    <form action="/userLogin" method="post">
+    <form action="/userRegister" method="post">
         <div class="loginBox">
             <div class="loginBoxCenter">
                 <p><label for="username">用户名：</label></p>
@@ -126,20 +121,20 @@
                 <!-- required 规定必需在提交之前填写输入字段-->
                 <p><label for="password">密码：</label></p>
                 <p><input type="password" id="password" name="password" class="loginInput" required="required" placeholder="请输入密码" value="" /></p>
-                <p><a class="forgetLink" href="#">忘记密码?</a></p>
-                <input id="remember" type="checkbox" name="remember" />
-                <label for="remember">记住登录状态</label>
+
+                <p><label for="repassword">确认密码：</label></p>
+                <p><input type="password" id="repassword" name="repassword" class="loginInput" required="required" placeholder="请确认密码" value="" /></p>
+
+                <p><label for="age">年龄：</label></p>
+                <p><input type="text" id="age" name="age" class="loginInput" required="required" placeholder="请输入年龄" value="" /></p>
             </div>
             <div class="loginBoxButtons">
 
 
-                <button class="loginBtn">登录</button>
-                <div> <a href=javascript:void(0) onclick=func() >新用户注册</a></div>
+                <button class="loginBtn">注册</button>
             </div>
         </div>
     </form>
 </div>
 </body>
-
-
 </html>

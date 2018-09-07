@@ -13,4 +13,8 @@
     <select id="selectUser" parameterType="com.lxinyu.entity.User" resultMap="userMap">
         SELECT * FROM USER WHERE name = #{username} AND  password = #{password};
     </select>
+    
+    <insert id="insertUser" parameterType="com.lxinyu.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO USER (`name`,`password`,`age`) VALUES (#{username},#{password},#{age});
+    </insert>
 </mapper>

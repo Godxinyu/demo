@@ -23,7 +23,6 @@ public class UserImpl implements IUser {
 
     @Override
     public User selectUser(String username, String password) {
-        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         User user = new User();
@@ -49,7 +48,8 @@ public class UserImpl implements IUser {
 
     @Override
     public int insertUser(User user) {
-        return 0;
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        return userMapper.insertUser(user);
     }
 
     @Override

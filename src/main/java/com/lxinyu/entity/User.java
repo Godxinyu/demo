@@ -1,9 +1,11 @@
 package com.lxinyu.entity;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by PC-Lxinyu on 2018/8/20.
  */
-
+@Component
 public class User {
     private int id;
     private String username;
