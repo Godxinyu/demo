@@ -4,6 +4,7 @@ import com.lxinyu.dao.UserMapper;
 import com.lxinyu.entity.User;
 import com.lxinyu.service.IUser;
 import com.lxinyu.utils.MybatisConnection;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,7 +50,10 @@ public class UserImpl implements IUser {
     @Override
     public int insertUser(User user) {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        return userMapper.insertUser(user);
+        int insertCount = userMapper.insertUser(user);
+        sqlSession.commit();
+        sqlSession.close();
+        return insertCount;
     }
 
     @Override

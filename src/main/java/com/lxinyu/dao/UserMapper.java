@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by PC-Lxinyu on 2018/8/24.
  */
 @Repository
+@Mapper
 public interface UserMapper {
 
     public User selectUser(User user);

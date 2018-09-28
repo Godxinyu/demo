@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lxinyu.dao.UserRoleMapper">
-    <insert id="insertUserRole" parameterType="com.lxinyu.entity.UserRoleRelation" useGeneratedKeys="true" keyProperty="ur_id">
-        INSERT INTO user_role (ur_userid,ur_roleid) VALUES (#{userId},2);
+    <insert id="insertUserRole" parameterType="com.lxinyu.entity.UserRoleRelation" useGeneratedKeys="true" keyProperty="id" keyColumn="ur_id">
+        INSERT INTO user_roles (ur_userid,ur_roleid) VALUES (#{userId},2);
     </insert>
 </mapper>
