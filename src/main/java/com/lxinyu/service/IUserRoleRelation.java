@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service;
  */
 public interface IUserRoleRelation {
     public int insertUserRole(UserRoleRelation userRoleRelation);
+    public int selectUserRole(int userId);
 }

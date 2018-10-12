@@ -5,4 +5,8 @@
     <insert id="insertUserRole" parameterType="com.lxinyu.entity.UserRoleRelation" useGeneratedKeys="true" keyProperty="id" keyColumn="ur_id">
         INSERT INTO user_roles (ur_userid,ur_roleid) VALUES (#{userId},2);
     </insert>
+
+    <select id="selectUserRole" parameterType="int" resultType="int">
+        SELECT ur_roleid FROM user_roles where ur_userid = #{userId};
+    </select>
 </mapper>

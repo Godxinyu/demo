@@ -7,4 +7,6 @@ import com.lxinyu.entity.UserRoleRelation;
  */
 public interface UserRoleMapper {
     public int insertUserRole(UserRoleRelation userRoleRelation);
+
+    public int selectUserRole(int userId);
 }

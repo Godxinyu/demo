@@ -1,7 +1,9 @@
 package com.lxinyu.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.lxinyu.entity.User;
 import com.lxinyu.entity.UserRoleRelation;
+import com.lxinyu.service.IRole;
 import com.lxinyu.service.IUser;
 import com.lxinyu.service.IUserRoleRelation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +27,20 @@ public class TestController {
     private IUserRoleRelation userRoleRelation;
     @Autowired
     private UserRoleRelation userRole;
+    @Autowired
+    private IRole roleSevice;
 
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     @ResponseBody
-//    public User logintest(HttpServletRequest req){
-//        return user.selectUser(req.getParameter("username"),req.getParameter("password"));
-//    }
-    public User userLogin(User userParam){
-        return userService.selectUser(userParam.getUsername(),userParam.getPassword());
+    public String userLogin(User userParam){
+        User user = userService.selectUser(userParam.getUsername(),userParam.getPassword());
+        int roleNum = userRoleRelation.selectUserRole(user.getId());
+        String roleName = roleSevice.selectRoleName(roleNum);
+        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(user);
+        jsonObject.put("role",roleName);
+        String newJsonString = jsonObject.toJSONString();
+        System.out.println(newJsonString);
+        return newJsonString;
     }
 
     @RequestMapping(value = "/login")

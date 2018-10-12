@@ -23,4 +23,13 @@ public class UserRoleRelationImpl implements IUserRoleRelation {
         sqlSession.close();
         return userRoleInsertCount;
     }
+
+    @Override
+    public int selectUserRole(int userId) {
+        UserRoleMapper userRoleMapper = sqlSession.getMapper(UserRoleMapper.class);
+        int roleNum = userRoleMapper.selectUserRole(userId);
+        sqlSession.commit();
+        sqlSession.close();
+        return roleNum;
+    }
 }
