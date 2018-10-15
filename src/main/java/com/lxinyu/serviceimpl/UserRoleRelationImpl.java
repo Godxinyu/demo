@@ -13,10 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserRoleRelationImpl implements IUserRoleRelation {
 
-    SqlSession sqlSession = MybatisConnection.createSqlSession();
+
 
     @Override
     public int insertUserRole(UserRoleRelation userRoleRelation) {
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserRoleMapper userRoleMapper = sqlSession.getMapper(UserRoleMapper.class);
         int userRoleInsertCount = userRoleMapper.insertUserRole(userRoleRelation);
         sqlSession.commit();
@@ -26,6 +27,7 @@ public class UserRoleRelationImpl implements IUserRoleRelation {
 
     @Override
     public int selectUserRole(int userId) {
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserRoleMapper userRoleMapper = sqlSession.getMapper(UserRoleMapper.class);
         int roleNum = userRoleMapper.selectUserRole(userId);
         sqlSession.commit();

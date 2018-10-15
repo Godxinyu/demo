@@ -12,11 +12,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleImpl implements IRole {
-    SqlSession sqlSession = MybatisConnection.createSqlSession();
+
 
     @Override
     public String selectRoleName(int roleId) {
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
-        return roleMapper.selectRole(roleId);
+        String roleName = roleMapper.selectRole(roleId);
+        sqlSession.commit();
+        sqlSession.close();
+        return roleName;
     }
 }

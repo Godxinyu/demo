@@ -18,12 +18,13 @@ import java.util.List;
 @Service
 public class UserImpl implements IUser {
 
-    SqlSession sqlSession = MybatisConnection.createSqlSession();
+
 //    @Autowired
 //    private UserMapper userMapper;
 
     @Override
     public User selectUser(String username, String password) {
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         User user = new User();
@@ -39,6 +40,8 @@ public class UserImpl implements IUser {
 //        user.setAge(25);
 //        user.setName("aaa");
 //        user.setPassword("abc");
+        sqlSession.commit();
+        sqlSession.close();
         return user;
     }
 
@@ -49,6 +52,7 @@ public class UserImpl implements IUser {
 
     @Override
     public int insertUser(User user) {
+        SqlSession sqlSession = MybatisConnection.createSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         int insertCount = userMapper.insertUser(user);
         sqlSession.commit();
